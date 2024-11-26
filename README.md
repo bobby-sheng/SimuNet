@@ -8,13 +8,16 @@
 
 # 效果展示
 1. Mock Cisco ASA 防火墙做模式切换和退出模式动作
-![mockarray](https://github.com/user-attachments/assets/6dc0babe-4ec9-456e-b3b2-246f393f6752)
+  ![mockarray](https://github.com/user-attachments/assets/657df695-79e9-4ef0-bcff-e24e77441b0e)
+
 
 1. Array AG 设备做命令流水线下发错误命令捕获测试
   1. 在配置文件中定义好Array设备错误的返回字符
-![mockssh](https://github.com/user-attachments/assets/62ece466-f723-4133-9cc6-25db930ee80c)
+    ![mockssh](https://github.com/user-attachments/assets/1493d582-73a1-4c2c-9b0f-dffd5779ed43)
+
   2. 使用netdevices接口ssh上mock server 服务，并且断言错误
-    1.![image](https://github.com/user-attachments/assets/27f560a2-84b5-4656-8afd-9200bd5d6e2e)
+     ![image](https://github.com/user-attachments/assets/6de19313-8a3a-46e5-a7ca-1c430e64c6cd)
+
 # 需求分析
 1. V1
   1. 可以正常的ssh连接
