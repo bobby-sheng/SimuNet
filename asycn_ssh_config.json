@@ -1,0 +1,245 @@
+[
+  {
+    "vendorName": "Cisco",
+    "typeName": "ASA",
+    "versionName": "9.6.0",
+    "port": 8022,
+    "prompt": "CiscoASA>",
+    "cmd_resp_map": {
+      "show version": {
+        "response": "\nCisco IOS Software, c6848x Software (c6848x-ADVENTERPRISEK9_NPE-M), Version 15.5(1)SY2, RELEASE SOFTWARE (fc6)\nTechnical Support: http://www.cisco.com/techsupport\nCopyright  (c) 1986-2018 by Cisco Systems, Inc.\nCompiled Fri 14-Sep-18 21:41 by prod_rel_team",
+        "mode": [
+          "CiscoASA>",
+          "CiscoASA(config)#"
+        ]
+      },
+      "show access-list": {
+        "response": "\naccess-list cached ACL log flows: total 0, denied 0 (deny-flow-max 4096)\n            alert-interval 300\naccess-list ext; 1 elements; name hash: 0x38a5feac\naccess-list ext line 27 extended permit ip any any (hitcnt=0) 0x54f8099a\naccess-list ext line 28 extended permit ip any any (hitcnt=0) 0x54f8099a\naccess-list ext line 29 extended permit ip any any (hitcnt=0) 0x54f8099a\naccess-list ext; 1 elements; name hash: 0x2b213249\naccess-list ext; 1 elements; name hash: 0xa12380e4\naccess-list ext; 58 elements; name hash: 0x4e845c94\naccess-list ext line 2 extended permit tcp host 10.10.10.17 range smtp 65 host 10.10.10.15 (hitcnt=0) 0x29374041\naccess-list ext line 2 remark 1\naccess-list ext line 3 extended permit object-group 212112 any6 any6 log emergencies interval 600 time-range 2023.05.03 (hitcnt=0) (inactive) 0x23580ce3\n  access-list ext line 3 extended permit tcp any6 any6 gt 200 log emergencies interval 600 time-range 2023.05.03 (hitcnt=0) (inactive) 0xf74ea432\naccess-list ext line 4 extended permit object-group 212.112 host 2001:db8:85a3::8a2e:370:7334 host 3.3.3.3 log errors interval 300 (hitcnt=0) 0x483caf90\n  access-list ext line 4 extended permit tcp host 2001:db8:85a3::8a2e:370:7334 host 3.3.3.3 gt 200 log errors interval 300 (hitcnt=0) 0xe899de52\naccess-list ext line 5 extended permit object-group all- 2001:db8:1::/64 2001:db8:1::/64 log informational interval 300 (hitcnt=0) 0x54569ef7\n  access-list ext line 5 extended permit tcp 2001:db8:1::/64 2001:db8:1::/64 gt 200 log informational interval 300 (hitcnt=0) 0x9f8e5a21\n  access-list ext line 5 extended permit tcp 2001:db8:1::/64 2001:db8:1::/64 eq 300 log informational interval 300 (hitcnt=0) 0x01746579\n  access-list ext line 5 extended permit tcp 2001:db8:1::/64 2001:db8:1::/64 range 600 800 log informational interval 300 (hitcnt=0) 0xd55b8e3e\n  access-list ext line 5 extended permit tcp 2001:db8:1::/64 2001:db8:1::/64 neq 850 log informational interval 300 (hitcnt=0) 0xefc0725b\n  access-list ext line 5 extended permit udp 2001:db8:1::/64 gt 200 2001:db8:1::/64 log informational interval 300 (hitcnt=0) 0x6d880662\n  access-list ext line 5 extended permit udp 2001:db8:1::/64 eq 300 2001:db8:1::/64 log informational interval 300 (hitcnt=0) 0x2e1d5173\n  access-list ext line 5 extended permit udp 2001:db8:1::/64 range 600 800 2001:db8:1::/64 log informational interval 300 (hitcnt=0) 0xc8c89d9e\n  access-list ext line 5 extended permit udp 2001:db8:1::/64 neq 850 2001:db8:1::/64 log informational interval 300 (hitcnt=0) 0xf3b43323\n  access-list ext line 5 extended permit tcp 2001:db8:1::/64 2001:db8:1::/64 gt 200 log informational interval 300 (hitcnt=0) 0x9f8e5a21\n  access-list ext line 5 extended permit tcp 2001:db8:1::/64 2001:db8:1::/64 gt 200 log informational interval 300 (hitcnt=0) 0x9f8e5a21\n  access-list ext line 5 extended permit tcp 2001:db8:1::/64 2001:db8:1::/64 gt 200 log informational interval 300 (hitcnt=0) 0x9f8e5a21\naccess-list ext line 6 extended permit tcp any range ftp-data ssh host 6.6.6.6 log notifications interval 1 (hitcnt=0) 0x0521bcf8\naccess-list ext line 7 extended permit tcp 2001:db8:1::/64 gt 56 host 2.2.2.2 eq www log warnings interval 300 (hitcnt=0) 0xa3d1824c\naccess-list ext line 8 extended permit tcp host 2001:db8:85a3::8a2e:370:7334 range www www object test_host_IPV4 range exec kshell (hitcnt=0) 0xc3c2c676\n  access-list ext line 8 extended permit tcp host 2001:db8:85a3::8a2e:370:7334 range www www host 192.168.2.1 range exec kshell (hitcnt=0) 0xc3c2c676\naccess-list ext line 9 extended permit tcp object test_host_IPV4 eq www object-group group_test range smtp www (hitcnt=0) 0xcdb2d9d0\n  access-list ext line 9 extended permit tcp host 192.168.2.1 eq www host 2001:db8:0:cd30:: range smtp www (hitcnt=0) 0x49947815\n  access-list ext line 9 extended permit tcp host 192.168.2.1 eq www host 192.168.2.1 range smtp www (hitcnt=0) 0xe49eb2a1\n  access-list ext line 9 extended permit tcp host 192.168.2.1 eq www host 2001:db8::db8:800:200c:417a range smtp www (hitcnt=0) 0x6d6b4c13\n  access-list ext line 9 extended permit tcp host 192.168.2.1 eq www host 1.1.1.1 range smtp www (hitcnt=0) 0x67b20a35\naccess-list ext line 10 extended permit tcp host 10.10.10.17 object-group test_service_group_tcp2 host 23.23.23.23 object-group test_service_group_tcp1 (hitcnt=0) 0x47cc6cf0\n  access-list ext line 10 extended permit tcp host 10.10.10.17 eq 500 host 23.23.23.23 eq 200 (hitcnt=0) 0x49175daf\n  access-list ext line 10 extended permit tcp host 10.10.10.17 eq 500 host 23.23.23.23 range 3000 4000 (hitcnt=0) 0x09bb66d6\n  access-list ext line 10 extended permit tcp host 10.10.10.17 eq 500 host 23.23.23.23 eq 500 (hitcnt=0) 0xea2b4b3f\n  access-list ext line 10 extended permit tcp host 10.10.10.17 eq 500 host 23.23.23.23 range 5000 5500 (hitcnt=0) 0x2f2f4a2c\n  access-list ext line 10 extended permit tcp host 10.10.10.17 range 5000 5500 host 23.23.23.23 eq 200 (hitcnt=0) 0xae0612be\n  access-list ext line 10 extended permit tcp host 10.10.10.17 range 5000 5500 host 23.23.23.23 range 3000 4000 (hitcnt=0) 0xfdb3ad3d\n  access-list ext line 10 extended permit tcp host 10.10.10.17 range 5000 5500 host 23.23.23.23 eq 500 (hitcnt=0) 0x5a0f26fb\n  access-list ext line 10 extended permit tcp host 10.10.10.17 range 5000 5500 host 23.23.23.23 range 5000 5500 (hitcnt=0) 0xf246feba\naccess-list ext line 11 extended permit tcp host 10.10.10.13 range smtp 65 host 10.10.10.15 object-group test_service_group_tcp1 (hitcnt=0) 0x0a69da06\n  access-list ext line 11 extended permit tcp host 10.10.10.13 range smtp 65 host 10.10.10.15 eq 200 (hitcnt=0) 0xf1b72fe0\n  access-list ext line 11 extended permit tcp host 10.10.10.13 range smtp 65 host 10.10.10.15 range 3000 4000 (hitcnt=0) 0x92ae5b88\n  access-list ext line 11 extended permit tcp host 10.10.10.13 range smtp 65 host 10.10.10.15 eq 500 (hitcnt=0) 0xda25ca6a\n  access-list ext line 11 extended permit tcp host 10.10.10.13 range smtp 65 host 10.10.10.15 range 5000 5500 (hitcnt=0) 0x71d3bf17\naccess-list ext line 12 extended permit udp host 10.10.12.10 range 25 www host 10.10.13.11 eq www (hitcnt=0) 0x1d06774a\naccess-list ext line 13 extended permit udp host 10.10.10.39 lt 25 host 10.10.15.11 range www www (hitcnt=0) 0x179a1f49\naccess-list ext line 14 extended permit udp host 10.10.10.40 neq 25 host 10.10.15.45 range 25 66 (hitcnt=0) 0x6c5e59d9\naccess-list ext line 15 extended permit udp host 10.10.10.47 object-group test_service_group_udp2 host 23.23.23.56 object-group test_service_group_udp1 (hitcnt=0) 0x291199b4\n  access-list ext line 15 extended permit udp host 10.10.10.47 eq isakmp host 23.23.23.56 eq 200 (hitcnt=0) 0x55c5bf8e\n  access-list ext line 15 extended permit udp host 10.10.10.47 eq isakmp host 23.23.23.56 range 3000 4000 (hitcnt=0) 0x00ceddad\n  access-list ext line 15 extended permit udp host 10.10.10.47 eq isakmp host 23.23.23.56 eq isakmp (hitcnt=0) 0x23dc72f6\n  access-list ext line 15 extended permit udp host 10.10.10.47 eq isakmp host 23.23.23.56 range 5000 5500 (hitcnt=0) 0x005048ce\n  access-list ext line 15 extended permit udp host 10.10.10.47 range 5000 5500 host 23.23.23.56 eq 200 (hitcnt=0) 0x45a275b9\n  access-list ext line 15 extended permit udp host 10.10.10.47 range 5000 5500 host 23.23.23.56 range 3000 4000 (hitcnt=0) 0xd6421fd2\n  access-list ext line 15 extended permit udp host 10.10.10.47 range 5000 5500 host 23.23.23.56 eq isakmp (hitcnt=0) 0x43cc98a7\n  access-list ext line 15 extended permit udp host 10.10.10.47 range 5000 5500 host 23.23.23.56 range 5000 5500 (hitcnt=0) 0xa13394ec\naccess-list ext line 16 extended permit udp host 10.10.10.49 range 25 www host 23.23.23.58 object-group test_service_group_udp1 (hitcnt=0) 0xb84abe30\n  access-list ext line 16 extended permit udp host 10.10.10.49 range 25 www host 23.23.23.58 eq 200 (hitcnt=0) 0x9b1a1f80\n  access-list ext line 16 extended permit udp host 10.10.10.49 range 25 www host 23.23.23.58 range 3000 4000 (hitcnt=0) 0x73209681\n  access-list ext line 16 extended permit udp host 10.10.10.49 range 25 www host 23.23.23.58 eq isakmp (hitcnt=0) 0xb6b10c9d\n  access-list ext line 16 extended permit udp host 10.10.10.49 range 25 www host 23.23.23.58 range 5000 5500 (hitcnt=0) 0xec1b4a9b\naccess-list ext line 17 extended permit icmp host 10.10.10.50 host 23.23.23.60 alternate-address 255 (hitcnt=0) 0xde94eb9c\naccess-list ext line 18 extended permit icmp6 host 10.10.10.62 host 23.23.23.66 255 (hitcnt=0) 0xf69b63bd\naccess-list ext line 19 extended permit icmp6 2001:db8:85a3::/64 host 23.23.23.66 255 0 (hitcnt=0) 0x3db42dfb\naccess-list ext line 20 extended permit tcp host 10.10.10.12 host 10.10.10.16 object-group test_service_group_tcp1 (hitcnt=0) 0xe839244f\n  access-list ext line 20 extended permit tcp host 10.10.10.12 host 10.10.10.16 eq 200 (hitcnt=0) 0x8b5bdbd5\n  access-list ext line 20 extended permit tcp host 10.10.10.12 host 10.10.10.16 range 3000 4000 (hitcnt=0) 0xea8d8c10\n  access-list ext line 20 extended permit tcp host 10.10.10.12 host 10.10.10.16 eq 500 (hitcnt=0) 0xdd7ef929\n  access-list ext line 20 extended permit tcp host 10.10.10.12 host 10.10.10.16 range 5000 5500 (hitcnt=0) 0xfb8699d3\naccess-list ext line 21 extended permit tcp host 10.10.10.10 object-group test_service_group_tcp2 host 10.10.10.11 (hitcnt=0) 0xde3fa84d\n  access-list ext line 21 extended permit tcp host 10.10.10.10 eq 500 host 10.10.10.11 (hitcnt=0) 0x3ac3b8ac\n  access-list ext line 21 extended permit tcp host 10.10.10.10 range 5000 5500 host 10.10.10.11 (hitcnt=0) 0x9517bd44\naccess-list ext line 22 extended permit tcp host 10.10.10.14 range 18 ssh host 23.23.23.24 (hitcnt=0) 0xd76647ea\naccess-list ext line 23 extended permit object TCP-8891-8896 object-group 202309201450_70ee object WS-2.2.2.16_32 time-range Schedule_W_ALL_060000_130000 (hitcnt=0) 0x7fd7a5b9\n  access-list ext line 23 extended permit tcp 192.168.50.2 255.255.255.254 host 2.2.2.16 range 8891 8896 time-range Schedule_W_ALL_060000_130000 (hitcnt=0) 0xc55c8ffe\n  access-list ext line 23 extended permit tcp fe80::/10 host 2.2.2.16 range 8891 8896 time-range Schedule_W_ALL_060000_130000 (hitcnt=0) 0x3ce100f7\n  access-list ext line 23 extended permit tcp host 192.168.50.12 host 2.2.2.16 range 8891 8896 time-range Schedule_W_ALL_060000_130000 (hitcnt=0) 0x6ea20824\naccess-list ext line 24 extended permit object TCP-8891-8896 object-group 202309211524_b6d6 object-group 202309211524_0b23 time-range Schedule_3157416aedcd3029 (hitcnt=0) 0x7fd7a5b7\n  access-list ext line 24 extended permit tcp fqdn www.baidu.com (unresolved) 192.168.50.6 255.255.255.254 range 8891 8896 time-range Schedule_3157416aedcd3029 (inactive) 0x0029be42\n  access-list ext line 24 extended permit tcp fqdn www.baidu.com (unresolved) ff00::/8 range 8891 8896 time-range Schedule_3157416aedcd3029 (inactive) 0x337a9844\n  access-list ext line 24 extended permit tcp fqdn www.taobao.com (unresolved) 192.168.50.6 255.255.255.254 range 8891 8896 time-range Schedule_3157416aedcd3029 (inactive) 0x1cdbbcc9\n  access-list ext line 24 extended permit tcp fqdn www.taobao.com (unresolved) ff00::/8 range 8891 8896 time-range Schedule_3157416aedcd3029 (inactive) 0x2d1ee334\naccess-list ext line 25 extended permit tcp any object-group name_test eq 15 (hitcnt=0) 0x987ea642\n  access-list ext line 25 extended permit tcp any host 2001:db8:0:23:8:800:200c:417a eq 15 (hitcnt=0) 0xd9933895\n  access-list ext line 25 extended permit tcp any host 2001:db8::200c:417a eq 15 (hitcnt=0) 0x5a04d8a4\n  access-list ext line 25 extended permit tcp any host 1.1.1.1 eq 15 (hitcnt=0) 0x059555cc\n  access-list ext line 25 extended permit tcp any host 1.1.1.0 eq 15 (hitcnt=0) 0xbf74fa2c\naccess-list ext line 26 extended permit object-group protocol_tcp_udp any object-group prot_src any object-group prot_dst (hitcnt=0) 0x000d529a\n  access-list ext line 26 extended permit tcp any eq 500 any eq 300 (hitcnt=0) 0x893a0614\n  access-list ext line 26 extended permit tcp any eq 500 any range 2089 3047 (hitcnt=0) 0xab6716ea\n  access-list ext line 26 extended permit tcp any range 1000 2000 any eq 300 (hitcnt=0) 0x47b9854d\n  access-list ext line 26 extended permit tcp any range 1000 2000 any range 2089 3047 (hitcnt=0) 0xd4ff82a7\n  access-list ext line 26 extended permit udp any eq isakmp any eq 300 (hitcnt=0) 0x87578c43\n  access-list ext line 26 extended permit udp any eq isakmp any range 2089 3047 (hitcnt=0) 0xac7a3397\n  access-list ext line 26 extended permit udp any range 1000 2000 any eq 300 (hitcnt=0) 0x9bc76a46\n  access-list ext line 26 extended permit udp any range 1000 2000 any range 2089 3047 (hitcnt=0) 0x43fb7f3e\n  access-list ext line 26 extended permit tcp any eq 500 any eq ssh (hitcnt=0) 0xfb12ce12\n  access-list ext line 26 extended permit tcp any range 1000 2000 any eq ssh (hitcnt=0) 0x0a865ede\n  access-list ext line 26 extended permit udp any eq isakmp any eq 22 (hitcnt=0) 0x79b1abd5\n  access-list ext line 26 extended permit udp any range 1000 2000 any eq 22 (hitcnt=0) 0x62641477\n  access-list ext line 26 extended permit tcp any eq 600 any eq 300 (hitcnt=0) 0xb09edc15\n  access-list ext line 26 extended permit tcp any eq 600 any range 2089 3047 (hitcnt=0) 0x09c6d077\n  access-list ext line 26 extended permit tcp any eq 600 any eq ssh (hitcnt=0) 0xa4ca5ce3\n  access-list ext line 26 extended permit udp any eq 600 any eq 300 (hitcnt=0) 0x5399fbb5\n  access-list ext line 26 extended permit udp any eq 600 any range 2089 3047 (hitcnt=0) 0x49b2b0ab\n  access-list ext line 26 extended permit udp any eq 600 any eq 22 (hitcnt=0) 0x4792a79d\n  access-list ext line 26 extended permit tcp any range 1888 1999 any eq 300 (hitcnt=0) 0x7e2668d6\n  access-list ext line 26 extended permit tcp any range 1888 1999 any range 2089 3047 (hitcnt=0) 0xa26a9a18\n  access-list ext line 26 extended permit tcp any range 1888 1999 any eq ssh (hitcnt=0) 0xb18c08db\n  access-list ext line 26 extended permit udp any range 1888 1999 any eq 300 (hitcnt=0) 0xe91c07e1\n  access-list ext line 26 extended permit udp any range 1888 1999 any range 2089 3047 (hitcnt=0) 0x844d4a3e\n  access-list ext line 26 extended permit udp any range 1888 1999 any eq 22 (hitcnt=0) 0x86e69508\naccess-list quota\"\"\"\"tion line 1 remark creat aaa\naccess-list f226eea8e1cde9f8c151e4505ff596529f46f47e253500ab21cff881e23e9a19cc41f6b2bfe7342ea87856ef01e981b8a6513c42b96bcf9f77c056b37fb69cbf9af00cbb172f5f988418e7fc56c591d7bc7718a5a5d67bee58f5239a0b64e59ce08981f1aab8774022773dcfc53723a92e841320e4da2b89 line 2 remark 51a0151e3abab3df99c18a56128570c92b80481602a2ae01c53ee7c01fb87627349ed039ed33336e98fdeade16d1d35d780e\naccess-list ext; 59 elements; name hash: 0x14059bb6\naccess-list ext line 1 extended permit object-group g object-group group_test object-group group_host_ip log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xed3002c0\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x48a5517f\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x23936f17\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: 192.168.1.0 255.255.255.0 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x30af7838\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: 2001:db8:0:cd30::/60 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x9073f26a\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x48a5517f\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 192.168.2.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x468e41e6\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 2001:db8::db8:800:200c:417a gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xcbe60764\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 2001:db8::db8:800:200c:417a gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xcbe60764\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 192.168.2.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x468e41e6\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: 192.168.1.0 255.255.255.0 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x30af7838\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: 2001:db8:0:cd30::/60 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x9073f26a\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 192.168.100.100 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xe5ba2621\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x48a5517f\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x23936f17\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x58eebce8\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xa25c4fba\n  access-list ext line 1 extended permit tcp host 192.168.2.1 192.168.1.0 255.255.255.0 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x645759f2\n  access-list ext line 1 extended permit tcp host 192.168.2.1 2001:db8:0:cd30::/60 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xbe14f04c\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x58eebce8\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 192.168.2.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x664ca0bf\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 2001:db8::db8:800:200c:417a gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xea2798e3\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 2001:db8::db8:800:200c:417a gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xea2798e3\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 192.168.2.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x664ca0bf\n  access-list ext line 1 extended permit tcp host 192.168.2.1 192.168.1.0 255.255.255.0 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x645759f2\n  access-list ext line 1 extended permit tcp host 192.168.2.1 2001:db8:0:cd30::/60 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xbe14f04c\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 192.168.100.100 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x74c569aa\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x58eebce8\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xa25c4fba\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xc1b48c8e\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x2e4f9ba3\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a 192.168.1.0 255.255.255.0 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xab7d7313\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a 2001:db8:0:cd30::/60 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xd33751ec\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xc1b48c8e\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 192.168.2.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xa62eb502\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 2001:db8::db8:800:200c:417a gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xef9f476a\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 2001:db8::db8:800:200c:417a gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xef9f476a\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 192.168.2.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xa62eb502\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a 192.168.1.0 255.255.255.0 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xab7d7313\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a 2001:db8:0:cd30::/60 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xd33751ec\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 192.168.100.100 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x00abf5fa\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xc1b48c8e\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x2e4f9ba3\n  access-list ext line 1 extended permit tcp host 1.1.1.1 host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x3da5b469\n  access-list ext line 1 extended permit tcp host 1.1.1.1 host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xd83f248c\n  access-list ext line 1 extended permit tcp host 1.1.1.1 192.168.1.0 255.255.255.0 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x171bb1d7\n  access-list ext line 1 extended permit tcp host 1.1.1.1 2001:db8:0:cd30::/60 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x18a14371\n  access-list ext line 1 extended permit tcp host 1.1.1.1 host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x3da5b469\n  access-list ext line 1 extended permit tcp host 1.1.1.1 host 192.168.2.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x1e4a5221\n  access-list ext line 1 extended permit tcp host 1.1.1.1 host 2001:db8::db8:800:200c:417a gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xbca8f507\n  access-list ext line 1 extended permit tcp host 1.1.1.1 host 2001:db8::db8:800:200c:417a gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xbca8f507\n  access-list ext line 1 extended permit tcp host 1.1.1.1 host 192.168.2.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x1e4a5221\n  access-list ext line 1 extended permit tcp host 1.1.1.1 192.168.1.0 255.255.255.0 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x171bb1d7\n  access-list ext line 1 extended permit tcp host 1.1.1.1 2001:db8:0:cd30::/60 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x18a14371\n  access-list ext line 1 extended permit tcp host 1.1.1.1 host 192.168.100.100 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x1aa01065\n  access-list ext line 1 extended permit tcp host 1.1.1.1 host 2001:db8:0:cd30:: gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x3da5b469\n  access-list ext line 1 extended permit tcp host 1.1.1.1 host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xd83f248c\n  access-list ext line 1 extended permit tcp host 2001:db8:0:cd30:: host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x23936f17\n  access-list ext line 1 extended permit tcp host 192.168.2.1 host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0xa25c4fba\n  access-list ext line 1 extended permit tcp host 2001:db8::db8:800:200c:417a host 1.1.1.1 gt 200 log debugging interval 300 time-range t (hitcnt=0) (inactive) 0x2e4f9ba3\naccess-list ext; 6 elements; name hash: 0xaccd60e9\naccess-list ext2 line 1 standard deny host 2.2.2.2 (hitcnt=0) 0x7b8c4b39\naccess-list ext2 line 2 standard deny any4 (hitcnt=0) 0x190959d1\naccess-list ext2 line 3 standard deny host 1.1.1.1 (hitcnt=0) 0x1e34c2e2\naccess-list ext2 line 4 standard permit host 2.2.2.2 (hitcnt=0) 0x85c8a60f\naccess-list ext2 line 5 standard permit any4 (hitcnt=0) 0x28b6e572\naccess-list ext2 line 6 standard permit host 1.1.1.1 (hitcnt=0) 0x9ef6d4eb\n",
+        "mode": [
+          "CiscoASA(config)#",
+          "CiscoASA#"
+        ]
+      }
+    },
+    "switch_mode_map": {
+      "enable": "Password:",
+      "end": "CiscoASA>",
+      "Password:": "CiscoASA#",
+      "configure terminal": "CiscoASA(config)#"
+    },
+    "exit_map": [
+      "exit"
+    ],
+    "mode_level": [
+      "CiscoASA>",
+      "CiscoASA#",
+      "CiscoASA(config)#"
+    ]
+  },
+  {
+    "vendorName": "Huawei",
+    "typeName": "USG6000",
+    "versionName": "100",
+    "port": 8023,
+    "prompt": "<USG6000V2>",
+    "cmd_resp_map": {
+      "display version": {
+        "response": "\nHuawei IOS Software, c6848x Software (c6848x-ADVENTERPRISEK9_NPE-M), Version 15.5(1)SY2, RELEASE SOFTWARE (fc6)\nTechnical Support: http://www.cisco.com/techsupport\nCopyright  (c) 1986-2018 by Cisco Systems, Inc.\nCompiled Fri 14-Sep-18 21:41 by prod_rel_team",
+        "mode": [
+          "<USG6000V2>",
+          "[USG6000V2]"
+        ]
+      }
+    },
+    "switch_mode_map": {
+      "system-view": "[USG6000V2]"
+    },
+    "exit_map": [
+      "q",
+      "quit"
+    ],
+    "mode_level": [
+      "<USG6000V2>",
+      "[USG6000V2]"
+    ]
+  },
+  {
+    "vendorName": "Array",
+    "typeName": "AG",
+    "versionName": "9.4.0",
+    "port": 8024,
+    "prompt": "hostname>",
+    "cmd_resp_map": {
+      "show version": {
+        "response": "111",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa": {
+        "response": "Cannot find the group name 'g-2024_9_30'.",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa20": {
+        "response": "No such group map configured: \"AD-2024_09-30\" to \"g-2024_09-30\".",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa2": {
+        "response": "Internal group \"g-1234\" not found, please configure the group at localdb.",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa3": {
+        "response": "Already has a group map for external group \"AD组-重庆外汇投资运维\".",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa4": {
+        "response": "role \"r-2024_09-30\" doesn't exist",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa5": {
+        "response": "qualification \"q-2024_09-30\" doesn't exist",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa6": {
+        "response": "the condition \"GROUPNAME IS 'g-2024_09-30'\" doesn't exist in qualification \"q-2024_09-30\", role \"r-2024_09-30\"",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa7": {
+        "response": "The resource \"netpools\" has not been assigned to this role",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa8": {
+        "response": "Netpool netpool does not exist",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa9": {
+        "response": "Resource group vpn-resources does not exist",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa10": {
+        "response": "The resource \"vpn-resources\" has not been assigned to this role",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa11": {
+        "response": "Cannot find the resource group 's-2024_09-30'.",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa12": {
+        "response": "This resource group name has been used, please give another one.",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa13": {
+        "response": "This resource s-2024_09-30 doesn't exist or hasn't assigned to target r-2024_09-30",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa14": {
+        "response": "Parse network resource failed: Invalid port format.",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa15": {
+        "response": "Parse network resource failed: Invalid ACL format.",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa16": {
+        "response": "Parse network resource failed: ICMP protocol resources MUST NOT with port information.",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa17": {
+        "response": "Cannot find the resource group 's-2024_09-30_1'.",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      },
+      "aa18": {
+        "response": "The resource \"12://2.3.3.3:100\" does not exist under resource group \"s-2024_09-30\"",
+        "mode": [
+          "hostname>",
+          "hostname#",
+          "hostname(config)#"
+        ]
+      }
+    },
+    "switch_mode_map": {
+      "enable": "Enable password:",
+      "Enable password:": "hostname#",
+      "configure terminal": "hostname(config)#"
+    },
+    "exit_map": [],
+    "mode_level": [
+      "<USG6000V2>",
+      "[USG6000V2]"
+    ]
+  }
+]
