@@ -1,0 +1,60 @@
+mode_map:
+  login: "array-ag>"
+  enable: "array-ag#"
+  config: "array-ag(config)#"
+  vsys_enable: "vpndg$"
+  vsys_config: "vpndg(config)#"
+
+
+login:
+  - cmd: "show version"
+    response: "login"
+  - cmd: "show access-list"
+    response: "login"
+  - cmd: "enable"
+    response: "switch_mode"
+
+enable:
+  - cmd: "show version"
+    response: "enable"
+  - cmd: "show access-list"
+    response: "enable"
+  - cmd: "configure terminal"
+    response: "switch_mode"
+  - cmd: "switch vpndg"
+    response: "switch_mode"
+
+config:
+  - cmd: "show version"
+    response: "config"
+  - cmd: "show access-list"
+    response: "config"
+  - cmd: "switch vpndg"
+    response: "switch_mode"
+
+vsys_enable:
+  - cmd: "show version"
+    response: "vsys_enable"
+  - cmd: "show access-list"
+    response: "vsys_enable"
+  - cmd: "configure terminal"
+    response: "switch_mode"
+
+vsys_config:
+  - cmd: "show version"
+    response: "vsys_enable"
+  - cmd: "show access-list"
+    response: "vsys_enable"
+
+
+
+switch_mode_map:
+  - cmd: "enable"
+    response: "Enable password:"
+  - cmd: "configure terminal"
+    response: "array-ag(config)#"
+  - cmd: "switch vpndg"
+    response: ""
+
+exit_list:
+  - "exit"

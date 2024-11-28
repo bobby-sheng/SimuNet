@@ -3,13 +3,13 @@
 # Author: Bobby Sheng <Bobby@sky-cloud.net>
 import sys
 import socket
-import json
 import asyncio
 import asyncssh
+import yaml
 from typing import Optional
 import logging.config
-from enum import Enum
-from devices_exit_mode import ExitMode
+from command_handler.command_handler_factory import CommandHandlerFactory
+
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger(__name__)
@@ -17,14 +17,7 @@ USER_DATABASE = {
     'admin': 'r00tme',
     'user': 'r00tme'
 }
-
-
-class CommandType(Enum):
-    EXIT = 'exit'
-    HISTORY = 'history'
-    UNSUPPORTED = 'unsupported'
-    CISCO_ENABLE_PASSWORD = 'Password:'
-    ARRAY_ENABLE_PASSWORD = 'Enable password:'
+MOCKSSHCONFIGPATH = "mockssh_mode_config/mockssh_config.yaml"
 
 
 class MockSshDevice(asyncssh.SSHServer):
@@ -32,15 +25,13 @@ class MockSshDevice(asyncssh.SSHServer):
 
     def __init__(self, port: int = 8022):
         self._port = port
-        self._prompt = ""
-        self._cmd_resp_map = {}
-        self._switch_mode_map = {}
-        self._exit_map = []
-        self._mode_level = []
+        self._device_mock_config = {}
         self._ssh_acceptor = None
 
     def connection_made(self, conn: asyncssh.SSHServerConnection):
-        logging.info(f"SSH connection received from {conn.get_extra_info('peername')[0]}")
+        peer_name = conn.get_extra_info('peername')
+        client_ip, client_port = peer_name[0], peer_name[1]
+        logging.info(f"SSH connection received from {client_ip}:{client_port}")
 
     def password_auth_supported(self) -> bool:
         return True
@@ -64,137 +55,39 @@ class MockSshDevice(asyncssh.SSHServer):
         return self._port
 
     @property
-    def prompt(self) -> str:
+    def device_mock_config(self) -> dict:
         """ Get device prompt """
-        return self._prompt
+        return self._device_mock_config
 
-    @prompt.setter
-    def prompt(self, value: str):
+    @device_mock_config.setter
+    def device_mock_config(self, value: dict):
         """ Set device prompt """
-        if type(value) is not str:
-            raise RuntimeError("MockSshDevice.prompt must be of type string")
-
-        self._prompt = value
-
-    @property
-    def cmd_resp_map(self) -> dict:
-        """ Get command to response map """
-        return self._cmd_resp_map
-
-    @property
-    def switch_mode_map(self) -> dict:
-        """ Get command to response map """
-        return self._switch_mode_map
-
-    @property
-    def exit_map(self) -> list:
-        """ Get command to response map """
-        return self._exit_map
-
-    @property
-    def mode_level(self) -> list:
-        """ Get command to response map """
-        return self._mode_level
-
-    @cmd_resp_map.setter
-    def cmd_resp_map(self, value: dict):
-        """ Set command to response map """
-        if type(value) is not dict:
-            raise RuntimeError("MockSshDevice.cmd_resp_map must be of type dict")
-        # All keys must be non-empty strings
-        if not all(isinstance(key, str) and key for key in value.keys()):
-            raise RuntimeError("MockSshDevice.cmd_resp_map must not contain empty commands")
-
-        # Process each command, removing leading and trailing new lines & spaces in commands & their responses
-        cleaned_value = {}
-        for cmd, cmd_info in value.items():
-            cleaned_cmd = cmd.strip()
-            cleaned_response = cmd_info['response'].strip()
-            cleaned_mode = cmd_info['mode']
-            cleaned_value[cleaned_cmd] = {'response': cleaned_response, 'mode': cleaned_mode}
-
-        self._cmd_resp_map = cleaned_value
-
-    @switch_mode_map.setter
-    def switch_mode_map(self, value: dict):
-        """ Set command to response map """
-        if type(value) is not dict:
-            raise RuntimeError("MockSshDevice.cmd_resp_map must be of type dict")
-        # All keys must be non-empty strings
-        if not all(value.keys()):
-            raise RuntimeError("MockSshDevice.cmd_resp_map must not contain empty commands")
-
-        # Remove leading and trailing new lines & spaces in commands & their responses
-        value = {cmd.strip(): response.strip() for cmd, response in value.items()}
-
-        self._switch_mode_map = value
-
-    @exit_map.setter
-    def exit_map(self, value: dict):
-        """ Set command to response map """
-        self._exit_map = value
-
-    @mode_level.setter
-    def mode_level(self, value: dict):
-        """ Set command to response map """
-        self._mode_level = value
+        self._device_mock_config = value
 
     async def handle_request(self, process: asyncssh.SSHServerProcess):
         """ Handle incoming SSH-request """
         _history = []  # 重置命令历史
-        prompt = self.prompt
-        if prompt:
+
+        # 创建命令处理器
+        try:
+            command_handler = await CommandHandlerFactory.create_handler(self._device_mock_config)
+            # 获取login prompt
+            prompt = await command_handler.get_login_mode()
             process.stdout.write(prompt)
+        except Exception as e:
+            process.stdout.write(f"An unexpected error occurred: {e}")
+            raise ValueError(f"An unexpected error occurred: {e}")
 
         try:
             async for command in process.stdin:
                 command = command.rstrip('\n')
                 logging.info(f"输入命令：{command}")
 
-                # 捕获退出，exit作为login模式close session，其他的命令作为模式切换返回上级
-                if command in self._exit_map or command == CommandType.EXIT.value:
-                    exit_mode = ExitMode(process=process,
-                                         command=command,
-                                         login_prompt=self.prompt,
-                                         prompt=prompt,
-                                         exit_map=self._exit_map,
-                                         CommandType=CommandType,
-                                         mode_level=self._mode_level
-                                         )
-                    prompt = await exit_mode.handle_exit()
-                    continue
-                elif command == CommandType.HISTORY.value:
+                prompt = await command_handler.exec_cmd(prompt, command, process)
+
+                if command == "history":
                     process.stdout.write('\n'.join(_history) + '\n')
-                    process.stdout.write(prompt)
-                    continue
-
-                # 将命令添加到历史记录
                 _history.append(command)
-
-                # enable 密码处理
-                if prompt in [CommandType.ARRAY_ENABLE_PASSWORD.value, CommandType.CISCO_ENABLE_PASSWORD.value]:
-                    prompt = self.switch_mode_map[prompt]
-                    process.stdout.write(prompt)
-                    continue
-
-                # 获取切换模式，指定命令捕获完成后将prompt设置为指定的模式字符
-                if command in self.switch_mode_map:
-                    if self.switch_mode_map[command]:
-                        prompt = self.switch_mode_map[command]
-                        process.stdout.write(prompt)
-                        continue
-
-                # 指定指令处理，返回预先写好的响应，有做可在此模式下执行的判断
-                if command in self.cmd_resp_map:
-                    if self.cmd_resp_map[command]:
-                        if prompt in self.cmd_resp_map[command]["mode"]:
-                            process.stdout.write(prompt + self.cmd_resp_map[command]["response"] + '\n')
-                        else:
-                            process.stdout.write("Mode Unsupported CmdRes\n")
-                elif command == '':
-                    pass
-                else:
-                    process.stdout.write("CmdRes Unsupported Command\n")
 
                 process.stdout.write(prompt)
 
@@ -234,27 +127,23 @@ class MockSshDevice(asyncssh.SSHServer):
         await self.stop()
 
 
-async def run_ssh_server(port, prompt, cmd_resp_map, switch_mode_map, exit_map, mode_level):
+async def run_ssh_server(port, device_mock_config):
     device = MockSshDevice(port=port)
-    device.prompt = prompt
-    device.cmd_resp_map = cmd_resp_map
-    device.switch_mode_map = switch_mode_map
-    device.exit_map = exit_map
-    device.mode_level = mode_level
+    device.device_mock_config = device_mock_config
     await device.__aenter__()  # Start the SSH server
     return device
 
 
 async def main():
-    with open('asycn_ssh_config.json', 'r', encoding='utf-8') as data:
-        data_list = json.load(data)
+    with open(MOCKSSHCONFIGPATH, 'r', encoding='utf-8') as data:
+        data_list = yaml.safe_load(data)
+        # 确保 data_list 是一个列表
+    if not isinstance(data_list, list):
+        raise ValueError("YAML data should be a list of devices info")
+
     servers_list = [run_ssh_server(
-        server_devices["port"],
-        server_devices["prompt"],
-        server_devices["cmd_resp_map"],
-        server_devices["switch_mode_map"],
-        server_devices["exit_map"],
-        server_devices["mode_level"]) for
+        server_devices.get('port'),
+        server_devices) for
         server_devices in data_list]
 
     await asyncio.gather(*servers_list)  # 并发启动所有服务器

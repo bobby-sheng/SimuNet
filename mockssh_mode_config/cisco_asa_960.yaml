@@ -1,0 +1,39 @@
+mode_map:
+  login: "CiscoASA>"
+  enable: "CiscoASA#"
+  config: "CiscoASA(config)#"
+
+
+login:
+  - cmd: "show version"
+    response: "login"
+  - cmd: "show access-list"
+    response: "login"
+  - cmd: "enable"
+    response: "switch_mode"
+
+enable:
+  - cmd: "show version"
+    response: "enable"
+  - cmd: "show access-list"
+    response: "enable"
+  - cmd: "configure terminal"
+    response: "switch_mode"
+
+config:
+  - cmd: "show version"
+    response: "config"
+  - cmd: "show access-list"
+    response: "config"
+
+
+switch_mode_map:
+  - cmd: "enable"
+    response: "Password:"
+  - cmd: "end"
+    response: "CiscoASA>"
+  - cmd: "configure terminal"
+    response: "CiscoASA(config)#"
+
+exit_list:
+  - "exit"
