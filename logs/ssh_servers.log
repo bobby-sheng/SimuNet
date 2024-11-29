@@ -2417,3 +2417,37 @@ TypeError: Logger._log() got an unexpected keyword argument 'file'
 2024-11-28 17:05:27,208 INFO [4924-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：
 2024-11-28 17:05:27,208 ERROR [4924-MainThread] mock_ssh_devices - An unexpected error occurred: Channel not open for sending
 2024-11-28 17:05:27,209 INFO [4924-MainThread] logging - [conn=0, chan=0] Closing channel
+2024-11-28 17:19:02,101 INFO [25752-MainThread] logging - Creating SSH listener on port 8022
+2024-11-28 17:19:02,102 INFO [25752-MainThread] mock_ssh_devices - ssh服务启动：[('0.0.0.0', 8022)]
+2024-11-28 17:19:02,141 INFO [25752-MainThread] logging - Creating SSH listener on port 8024
+2024-11-28 17:19:02,142 INFO [25752-MainThread] mock_ssh_devices - ssh服务启动：[('0.0.0.0', 8024)]
+2024-11-28 18:06:40,520 INFO [23704-MainThread] logging - Creating SSH listener on port 8022
+2024-11-28 18:06:40,521 INFO [23704-MainThread] mock_ssh_devices - ssh服务启动：[('0.0.0.0', 8022)]
+2024-11-28 18:06:40,560 INFO [23704-MainThread] logging - Creating SSH listener on port 8024
+2024-11-28 18:06:40,560 INFO [23704-MainThread] mock_ssh_devices - ssh服务启动：[('0.0.0.0', 8024)]
+2024-11-28 18:06:50,207 INFO [23704-MainThread] logging - [conn=0] Accepted SSH client connection
+2024-11-28 18:06:50,207 INFO [23704-MainThread] logging - [conn=0]   Local address: 172.21.5.110, port 8022
+2024-11-28 18:06:50,208 INFO [23704-MainThread] logging - [conn=0]   Peer address: 172.21.5.110, port 53638
+2024-11-28 18:06:50,208 INFO [23704-MainThread] mock_ssh_devices - SSH connection received from 172.21.5.110:53638
+2024-11-28 18:06:50,221 INFO [23704-MainThread] logging - [conn=0] Beginning auth for user admin
+2024-11-28 18:06:51,740 INFO [23704-MainThread] logging - [conn=0] Auth for user admin succeeded
+2024-11-28 18:06:51,741 INFO [23704-MainThread] logging - [conn=0] Sending server host keys disabled
+2024-11-28 18:06:51,744 INFO [23704-MainThread] logging - [conn=0, chan=0] New SSH session requested
+2024-11-28 18:06:51,745 INFO [23704-MainThread] logging - [conn=0, chan=0]   PTY created
+2024-11-28 18:06:51,745 INFO [23704-MainThread] logging - [conn=0, chan=0]   Line editor enabled
+2024-11-28 18:06:51,746 INFO [23704-MainThread] logging - [conn=0, chan=0]   Interactive shell requested
+2024-11-28 18:06:51,942 INFO [23704-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：
+2024-11-28 18:06:52,135 INFO [23704-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：
+2024-11-28 18:06:54,402 INFO [23704-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：
+2024-11-28 18:06:56,601 INFO [23704-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：
+2024-11-28 18:06:58,260 INFO [23704-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：enable
+2024-11-28 18:06:58,469 INFO [23704-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：
+2024-11-28 18:07:00,444 INFO [23704-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：
+2024-11-28 18:07:04,443 INFO [23704-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：eit
+2024-11-28 18:07:04,636 INFO [23704-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：
+2024-11-28 18:07:06,862 INFO [23704-MainThread] logging - [conn=0, chan=0] Closing channel due to connection close
+2024-11-28 18:07:06,863 INFO [23704-MainThread] logging - [conn=0, chan=0] Channel closed
+2024-11-28 18:07:06,863 INFO [23704-MainThread] mock_ssh_devices - SSH connection closed
+2024-11-28 18:07:06,863 INFO [23704-MainThread] mock_ssh_devices - [cisco:ASA:9.6.0] --> 输入命令：
+2024-11-28 18:07:06,864 ERROR [23704-MainThread] mock_ssh_devices - An unexpected error occurred: Channel not open for sending
+2024-11-28 18:07:06,864 INFO [23704-MainThread] logging - [conn=0, chan=0] Closing channel

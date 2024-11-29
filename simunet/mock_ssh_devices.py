@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.10.6
 # -*- coding: utf-8 -*-
 # Author: Bobby Sheng <Bobby@sky-cloud.net>
-import sys
 import socket
 import asyncssh
 from typing import Optional
@@ -38,7 +37,7 @@ class MockSshDevice(asyncssh.SSHServer):
 
     def connection_lost(self, exc: Optional[Exception]):
         if exc:
-            logging.info('SSH connection error: ' + str(exc), file=sys.stderr)
+            logging.error('SSH connection error: %s', exc)
         else:
             logging.info('SSH connection closed')
 
