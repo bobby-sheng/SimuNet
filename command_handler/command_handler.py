@@ -31,7 +31,7 @@ class CommandHandler(abc.ABC):
         self.prompt = None
 
     @abc.abstractmethod
-    def is_as_device(self):
+    def is_selective(self):
         raise NotImplementedError
 
     @abc.abstractmethod

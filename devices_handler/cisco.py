@@ -16,7 +16,7 @@ class CiscoCommandHandler(CommandHandler):
         )
 
     @property
-    def is_as_device(self) -> bool:
+    def is_selective(self) -> bool:
         if self.info.vendor + self.info.model + self.info.version == \
                 self.device_mock_config.vendorName + self.device_mock_config.typeName + self.device_mock_config.versionName:
             return True

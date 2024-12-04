@@ -5,6 +5,10 @@ mode_map:
 
 
 login:
+  - cmd: "aa18"
+    response: "The resource \"12://2.3.3.3:100\" does not exist under resource group \"s-2024_09-30\""
+  - cmd: "aa17"
+    response: "Cannot find the resource group 's-2024_09-30_1'."
   - cmd: "show version"
     response: "login"
   - cmd: "show access-list"

@@ -11,11 +11,11 @@ class CommandHandlerFactory:
     @staticmethod
     async def create_handler(device_mock_config):
         mock_config = DeviceInfo(**device_mock_config)
-        if (handler := CiscoCommandHandler(mock_config)).is_as_device:
+        if (handler := CiscoCommandHandler(mock_config)).is_selective:
             await handler.initialize()
             return handler
 
-        elif (handler := ArrayCommandHandler(mock_config)).is_as_device:
+        elif (handler := ArrayCommandHandler(mock_config)).is_selective:
             await handler.initialize()
             return handler
 
