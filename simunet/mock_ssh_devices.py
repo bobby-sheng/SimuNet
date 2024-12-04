@@ -115,7 +115,7 @@ class MockSshDevice(asyncssh.SSHServer):
     async def stop(self):
         """ Stop mock SSH-device """
         self._ssh_acceptor.close()
-        await self._ssh_acceptor.wait_closed()
+        # await self._ssh_acceptor.wait_closed()
 
     async def __aenter__(self):
         await self.start()

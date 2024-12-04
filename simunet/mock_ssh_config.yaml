@@ -1,11 +1,11 @@
 - vendorName: "cisco"
   typeName: "ASA"
   versionName: "9.6.0"
-  port: 8022
+  port: 7022
   config_file_name: "cisco_asa_960.yaml"
 
 - vendorName: "array"
   typeName: "ag"
   versionName: "9.6.0"
-  port: 8024
+  port: 7024
   config_file_name: "array_ag_940.yaml"

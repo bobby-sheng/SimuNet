@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Bobby Sheng <Bobby@sky-cloud.net>
 import yaml
+import uvicorn
 import asyncio
 from fastapi import FastAPI
 from simunet.mock_ssh_devices import MockSshDevice

@@ -2,14 +2,9 @@
 name = "simunet"
 version = "0.1.0"
 readme = "README.md"
-packages = [
-    {include = "command_handler", from = "./command_handler"},
-    {include = "devices_handler", from = "./devices_handler"},
-    {include = "mockssh_mode_config", from = "./mockssh_mode_config"},
-    {include = "models", from = "./models"},
-    {include = "simutnet", from = "./simutnet"},
-    {include = "main", from = "./"},
-]
+description = "mock ssh servers"
+authors = ["bobby"]
+
 
 
 [tool.poetry.dependencies]
